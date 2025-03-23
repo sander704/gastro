@@ -40,14 +40,14 @@
 
 <body class="index-page">
   <br>
-  <header id="header">
+   <header id="header">
     <div class="container-fluid container-xl position-relative">
-
+  
       <!-- Imagen del header (centrada) -->
-      <div class="d-flex justify-content-center">
-        <img style="width: 95%;" src="assets/img/barner.png" alt="Logo" class="header-logo">
+      <div class="d-flex justify-content-center mb-2"> <!-- Reduje el margen inferior con mb-2 -->
+        <img style="width: 100%; max-width: 1200px;" src="assets/img/barner.png" alt="Logo" class="header-logo img-fluid">
       </div>
-
+  
       <!-- Menú de navegación (fijo debajo de la imagen) -->
       <nav id="navmenu" class="navmenu d-flex justify-content-center align-items-center">
         <!-- Botón de hamburguesa para móviles -->
@@ -118,6 +118,14 @@
             display: none;
           }
         }
+  
+        /* Ajustes para la imagen en móviles */
+        @media (max-width: 767.98px) {
+          .header-logo {
+            max-width: 100%; /* Asegura que la imagen no se desborde */
+            height: auto; /* Mantiene la proporción de la imagen */
+          }
+        }
       </style>
       
       <!-- JavaScript para manejar el toggle -->
@@ -137,7 +145,7 @@
           });
         });
       </script>
-
+  
     </div>
   </header>
 
