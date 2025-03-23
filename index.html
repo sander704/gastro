@@ -49,19 +49,94 @@
       </div>
 
       <!-- Menú de navegación (fijo debajo de la imagen) -->
-      <nav id="navmenu" class="navmenu d-flex justify-content-center">
-        <!-- Aquí van los elementos del menú -->
-        <ul class="d-flex list-unstyled mb-0">
-          <li><a style="color: black;font-size: 19px;" href="#inicio">Bienvenida</a></li>
-          <li><a style="color: black;font-size: 19px;" href="#conferencias">Conferencias</a></li>
-          <li><a style="color: black;font-size: 19px;"href="#organizacion">Organización</a></li>
-          <li><a style="color: black;font-size: 19px;"href="#organizacion">Programa</a></li>
-          
-          
-          <li><a style="color: black;font-size: 19px;" href="#contacto">Contacto</a></li>
+      <nav id="navmenu" class="navmenu d-flex justify-content-center align-items-center">
+        <!-- Botón de hamburguesa para móviles -->
+        <i class="mobile-nav-toggle d-xl-none bi bi-list" id="mobile-nav-toggle" style="font-size: 24px; color: black;"></i>
+      
+        <!-- Menú principal -->
+        <ul class="d-flex list-unstyled mb-0" id="nav-menu">
+          <li><a style="color: black; font-size: 19px;" href="#inicio">Bienvenida</a></li>
+          <li><a style="color: black; font-size: 19px;" href="#conferencias">Conferencias</a></li>
+          <li><a style="color: black; font-size: 19px;" href="#organizacion">Organización</a></li>
+          <li><a style="color: black; font-size: 19px;" href="#registro">Registro</a></li>
+          <li><a style="color: black; font-size: 19px;" href="#organizacion">Programa</a></li>
+          <li><a style="color: black; font-size: 19px;" href="#contacto">Contacto</a></li>
         </ul>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
+      
+      <!-- Estilos personalizados -->
+      <style>
+        /* Estilos base del menú */
+        #nav-menu {
+          display: flex;
+        }
+      
+        /* Estilos para móviles */
+        @media (max-width: 1199.98px) {
+          /* Ocultar el menú por defecto en móviles */
+          #nav-menu {
+            display: none;
+            flex-direction: column;
+            position: fixed;
+            top: 0;
+            left: -250px; /* Menú oculto fuera de la pantalla */
+            width: 250px; /* Ancho del menú lateral */
+            height: 100vh; /* Altura completa de la pantalla */
+            background-color: #f8f9fa; /* Color de fondo del menú */
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Sombra para efecto de profundidad */
+            z-index: 1000; /* Asegura que el menú esté por encima de otros elementos */
+            transition: left 0.3s ease; /* Transición suave */
+          }
+      
+          /* Mostrar el menú cuando tiene la clase "active" */
+          #nav-menu.active {
+            left: 0; /* Despliega el menú desde la izquierda */
+          }
+      
+          /* Estilo para los enlaces del menú en móviles */
+          #nav-menu li a {
+            color: black; /* Color del texto */
+            padding: 15px;
+            text-align: left;
+            display: block;
+          }
+      
+          /* Estilo para el botón de hamburguesa */
+          #mobile-nav-toggle {
+            cursor: pointer;
+            display: block; /* Mostrar solo en móviles */
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 1001; /* Asegura que el botón esté por encima del menú */
+          }
+        }
+      
+        /* Ocultar el botón de hamburguesa en pantallas grandes */
+        @media (min-width: 1200px) {
+          #mobile-nav-toggle {
+            display: none;
+          }
+        }
+      </style>
+      
+      <!-- JavaScript para manejar el toggle -->
+      <script>
+        // Función para abrir/cerrar el menú
+        document.getElementById('mobile-nav-toggle').addEventListener('click', function() {
+          var navMenu = document.getElementById('nav-menu');
+          navMenu.classList.toggle('active');
+        });
+      
+        // Función para cerrar el menú al hacer clic en una opción
+        var navLinks = document.querySelectorAll('#nav-menu li a');
+        navLinks.forEach(function(link) {
+          link.addEventListener('click', function() {
+            var navMenu = document.getElementById('nav-menu');
+            navMenu.classList.remove('active'); // Oculta el menú
+          });
+        });
+      </script>
 
     </div>
   </header>
@@ -120,11 +195,11 @@
         </div>
 
  
-        <div  id="inicio" class="container mt-4">
-          <div  class="row"> <!-- Fila para las columnas -->
+        <div id="inicio" class="container mt-4">
+          <div class="row justify-content-center"> <!-- Fila para las columnas, centrada -->
             <!-- Columna 1 -->
             <div class="col-md-6">
-              <p style="color: black; font-size: 18px;">            
+              <p class="responsive-text text-center text-md-left">
                 El cáncer de colon es uno de los tipos de cáncer más comunes a nivel mundial y una de las principales
                 causas de mortalidad por cáncer. En Cuba, al igual que en muchos países, representa un problema de salud
                 pública significativo.
@@ -134,10 +209,10 @@
                 las estrategias de diagnóstico es crucial.
               </p>
             </div>
-
+        
             <!-- Columna 2 -->
             <div class="col-md-6">
-              <p style="color: black; font-size: 18px;">
+              <p class="responsive-text text-center text-md-left">
                 El enfoque traslacional busca conectar los hallazgos científicos con su aplicación en la práctica
                 médica. En el caso del cáncer de colon, esto implica:<br>
                 - Desarrollar nuevas técnicas de diagnóstico.<br>
@@ -145,12 +220,36 @@
                 - Implementar estrategias de prevención basadas en evidencia.<br><br>
                 Cuba ha destacado en el desarrollo de biotecnología y medicamentos innovadores,
                 como las vacunas y terapias contra el cáncer.
-                Este enfoque traslacional podría potenciar el uso de estas tecnologías para el cáncer de colon aspecto
-                que seran abordados en el marco del evento. </p>
-             
+                Este enfoque traslacional podría potenciar el uso de estas tecnologías para el cáncer de colon, aspecto
+                que será abordado en el marco del evento.
+              </p>
             </div>
           </div>
         </div>
+        
+        <!-- Estilos personalizados -->
+        <style>
+          /* Tamaño de fuente base para pantallas grandes */
+          .responsive-text {
+            color: black;
+            font-size: 18px; /* Tamaño para pantallas grandes */
+            line-height: 1.6; /* Espaciado entre líneas para mejor legibilidad */
+          }
+        
+          /* Ajustes para pantallas medianas (tablets) */
+          @media (max-width: 991.98px) {
+            .responsive-text {
+              font-size: 16px; /* Un poco más pequeño para tablets */
+            }
+          }
+        
+          /* Ajustes para pantallas pequeñas (móviles) */
+          @media (max-width: 767.98px) {
+            .responsive-text {
+              font-size: 14px; /* Tamaño más pequeño para móviles */
+            }
+          }
+        </style>
 
         <div class="text-center" data-aos="zoom-out" data-aos-delay="100">
 
@@ -309,7 +408,7 @@
     <section id="services" class="services section light-background">
 
       <!-- Section Title -->
-      <div class="container section-title" >
+      <div id="registro" class="container section-title" >
         <a href=""> <h2>Inscripción y Registro</h2></a>
        
         <p>Se destinan 60 plazas para participantes de centros externos y 20 para participantes del centro anfitrión</p>
